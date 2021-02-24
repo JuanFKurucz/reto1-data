@@ -34,9 +34,7 @@ services:
       - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
     entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
     networks:
-      graylog_net:
-        aliases:
-          - graylog_server
+      - graylog_net
     restart: always
     depends_on:
       - mongo
@@ -59,10 +57,12 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
   web:
-    build: .
+    build:
+      context: ./backend
+      dockerfile: backend.dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - ./backend:/code
     ports:
       - "8000:8000"
     depends_on:
