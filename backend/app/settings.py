@@ -137,15 +137,15 @@ LOGGING = {
         "graypy": {
             "level": "INFO",
             "class": "graypy.GELFUDPHandler",
-            "host": "graylog",
-            "port": 12201,
+            "host": "graylog", # this is the hostname of the container named graylog from docker-compose
+            "port": 12201, # UDP port we are using in Graylog
         },
     },
     "root": {
         "handlers": [
             "graypy",
             "console",
-            "file",
+            "file", # we can opt out from including logs in a file
         ],
         "level": "DEBUG",
     },
