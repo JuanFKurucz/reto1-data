@@ -120,6 +120,8 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 
+# Logging settings to send python logs to graylog
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -133,7 +135,7 @@ LOGGING = {
             "filename": "debug.log",
         },
         "graypy": {
-            "level": "WARNING",
+            "level": "INFO",
             "class": "graypy.GELFUDPHandler",
             "host": "graylog",
             "port": 12201,
@@ -145,12 +147,12 @@ LOGGING = {
             "console",
             "file",
         ],
-        "level": "WARNING",
+        "level": "DEBUG",
     },
     "loggers": {
         "django.request": {
             "handlers": ["graypy"],
-            "level": "DEBUG",
+            "level": "INFO",
             "propagate": True,
         },
     },

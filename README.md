@@ -14,13 +14,17 @@ Currently it consist of a set of containers:
 
 - Run `docker-compose up` in the root folder, it should install and run all the containers
 - You will have to create a GELF UDP input in http://127.0.0.1:9000/system/inputs in bin address 0.0.0.0 and port 12201
-- After that visting http://127.0.0.1:8000/hello/ should generate logs
+- After that visiting http://127.0.0.1:8000/hello/ should generate logs
 
-## Greylog credentials
+## Graylog credentials
 
-Credentials for greylog system are:
+Credentials for graylog system are:
 
 ```
 Username: admin
 Password: admin
 ```
+
+## How to store logs in Graylog from the backend
+
+Read the documentation in [Django Backend example](backend/README.md) for more information about this
