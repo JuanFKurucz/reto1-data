@@ -1,17 +1,17 @@
 version: '3'
 services:
   # MongoDB: https://hub.docker.com/_/mongo/
-  mongo:
+  mongo: # Database for graylog
     image: mongo:4.2
     networks:
       - graylog_net
-    logging:
+    logging: # Logging configuration to send docker logs to graylog
       driver: "gelf"
       options:
         gelf-address: "udp://${graylog}:12201"
         tag: "mongo-logs"
   # Elasticsearch: https://www.elastic.co/guide/en/elasticsearch/reference/7.10/docker.html
-  elasticsearch:
+  elasticsearch: # Database for graylog
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
     environment:
       - http.host=0.0.0.0
@@ -28,13 +28,13 @@ services:
           memory: 1g
     networks:
       - graylog_net
-    logging:
+    logging: # Logging configuration to send docker logs to graylog
       driver: "gelf"
       options:
         gelf-address: "udp://${graylog}:12201"
         tag: "elastic-logs"
   # Graylog: https://hub.docker.com/r/graylog/graylog/
-  graylog:
+  graylog: # Graylog instance
     image: graylog/graylog:4.0
     environment:
       # CHANGE ME (must be at least 16 characters)!
@@ -60,18 +60,18 @@ services:
       - 12201:12201
       # GELF UDP
       - 12201:12201/udp
-  web_db:
+  web_db: # Database for django project
     image: postgres
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    logging:
+    logging: # Logging configuration to send docker logs to graylog
       driver: "gelf"
       options:
         gelf-address: "udp://${graylog}:12201"
         tag: "postgres-logs"
-  web:
+  web: # Simple django project
     build:
       context: ./backend
       dockerfile: backend.dockerfile
