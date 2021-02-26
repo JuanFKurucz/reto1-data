@@ -1,8 +1,23 @@
 version: '3'
+
+networks:
+  graylog_net:
+    driver: bridge
+
+volumes:
+  web_db_data: {}
+  web_db_data_backups: {}
+  graylog_mongo_data: {}
+  graylog_elastic_data: {}
+  graylog_config: {}
+  graylog_journal: {}
+
 services:
   # MongoDB: https://hub.docker.com/_/mongo/
   mongo: # Database for graylog
     image: mongo:4.2
+    volumes:
+      - graylog_mongo_data:/data/db
     networks:
       - graylog_net
     logging: # Logging configuration to send docker logs to graylog
@@ -26,6 +41,8 @@ services:
       resources:
         limits:
           memory: 1g
+    volumes:
+      - graylog_elastic_data:/usr/share/elasticsearch/data
     networks:
       - graylog_net
     logging: # Logging configuration to send docker logs to graylog
@@ -60,12 +77,18 @@ services:
       - 12201:12201
       # GELF UDP
       - 12201:12201/udp
+    volumes:
+      - graylog_journal:/usr/share/graylog/data/journal
+      - graylog_config:/usr/share/graylog/data/config
   web_db: # Database for django project
     image: postgres
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    volumes:
+      - web_db_data:/var/lib/postgresql/data:Z
+      - web_db_data_backups:/backups:z
     logging: # Logging configuration to send docker logs to graylog
       driver: "gelf"
       options:
@@ -85,6 +108,3 @@ services:
       - graylog
     networks:
       - graylog_net
-networks:
-  graylog_net:
-    driver: bridge
