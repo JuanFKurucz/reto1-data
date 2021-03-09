@@ -493,6 +493,31 @@
       <to>Salida Tabla</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Get rows from result</from>
+      <to>Get file names</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get file names</from>
+      <to>Entrada Fichero de Texto</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get file names</from>
+      <to>Write to log 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get rows from result</from>
+      <to>Write to log</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Entrada Fichero de Texto</from>
+      <to>Write to log 3</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Entrada Fichero de Texto</name>
@@ -505,10 +530,10 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <accept_filenames>N</accept_filenames>
-    <passing_through_fields>N</passing_through_fields>
-    <accept_field/>
-    <accept_stepname/>
+    <accept_filenames>Y</accept_filenames>
+    <passing_through_fields>Y</passing_through_fields>
+    <accept_field>path</accept_field>
+    <accept_stepname>Get file names</accept_stepname>
     <separator>,</separator>
     <enclosure/>
     <enclosure_breaks>N</enclosure_breaks>
@@ -533,8 +558,18 @@
     <length>Characters</length>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>/Users/andres/Google Drive/Facultad/Reto - Solución Bioinformatica/Integración/Reto/csv</name>
-      <filemask>.*F\.csv</filemask>
+      <name/>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name/>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name/>
+      <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
@@ -624,8 +659,92 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
-      <yloc>128</yloc>
+      <xloc>480</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get file names</name>
+    <type>GetFileNames</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <filter>
+      <filterfiletype>only_files</filterfiletype>
+    </filter>
+    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <rownum>N</rownum>
+    <isaddresult>Y</isaddresult>
+    <filefield>Y</filefield>
+    <rownum_field/>
+    <filename_Field>path</filename_Field>
+    <wildcard_Field/>
+    <exclude_wildcard_Field/>
+    <dynamic_include_subfolders>Y</dynamic_include_subfolders>
+    <limit>0</limit>
+    <file>
+      <name/>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>320</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get rows from result</name>
+    <type>RowsFromResult</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>path</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>fastq_id</name>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -640,14 +759,14 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>stg_tax_family</connection>
+    <connection>stg</connection>
     <schema>public</schema>
     <table>tax_family</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
-    <specify_fields>N</specify_fields>
+    <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
     <partitioning_daily>N</partitioning_daily>
@@ -658,6 +777,18 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>fastq_id</column_name>
+        <stream_name>fastq_id</stream_name>
+      </field>
+      <field>
+        <column_name>taxid</column_name>
+        <stream_name>taxid</stream_name>
+      </field>
+      <field>
+        <column_name>rel_abundance</column_name>
+        <stream_name>rel_abundance</stream_name>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -668,8 +799,221 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>576</xloc>
-      <yloc>128</yloc>
+      <xloc>640</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Write to log</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <loglevel>log_level_basic</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage>${path} ${fastq_id}</logmessage>
+    <fields>
+      <field>
+        <name>path</name>
+      </field>
+      <field>
+        <name>fastq_id</name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Write to log 2</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <loglevel>log_level_basic</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage>${path}
+${fastq_id}
+${filename}
+${short_filename}
+${path_1}
+${type}
+----</logmessage>
+    <fields>
+      <field>
+        <name>path</name>
+      </field>
+      <field>
+        <name>fastq_id</name>
+      </field>
+      <field>
+        <name>filename</name>
+      </field>
+      <field>
+        <name>short_filename</name>
+      </field>
+      <field>
+        <name>path_1</name>
+      </field>
+      <field>
+        <name>type</name>
+      </field>
+      <field>
+        <name>exists</name>
+      </field>
+      <field>
+        <name>ishidden</name>
+      </field>
+      <field>
+        <name>isreadable</name>
+      </field>
+      <field>
+        <name>iswriteable</name>
+      </field>
+      <field>
+        <name>lastmodifiedtime</name>
+      </field>
+      <field>
+        <name>size</name>
+      </field>
+      <field>
+        <name>extension</name>
+      </field>
+      <field>
+        <name>uri</name>
+      </field>
+      <field>
+        <name>rooturi</name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Write to log 3</name>
+    <type>WriteToLog</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <loglevel>log_level_basic</loglevel>
+    <displayHeader>Y</displayHeader>
+    <limitRows>N</limitRows>
+    <limitRowsNumber>0</limitRowsNumber>
+    <logmessage>${fastq_id}
+${taxid}
+${rel_abundance}
+----</logmessage>
+    <fields>
+      <field>
+        <name>path</name>
+      </field>
+      <field>
+        <name>fastq_id</name>
+      </field>
+      <field>
+        <name>filename</name>
+      </field>
+      <field>
+        <name>short_filename</name>
+      </field>
+      <field>
+        <name>path_1</name>
+      </field>
+      <field>
+        <name>type</name>
+      </field>
+      <field>
+        <name>exists</name>
+      </field>
+      <field>
+        <name>ishidden</name>
+      </field>
+      <field>
+        <name>isreadable</name>
+      </field>
+      <field>
+        <name>iswriteable</name>
+      </field>
+      <field>
+        <name>lastmodifiedtime</name>
+      </field>
+      <field>
+        <name>size</name>
+      </field>
+      <field>
+        <name>extension</name>
+      </field>
+      <field>
+        <name>uri</name>
+      </field>
+      <field>
+        <name>rooturi</name>
+      </field>
+      <field>
+        <name>taxid</name>
+      </field>
+      <field>
+        <name>rel_abundance</name>
+      </field>
+      <field>
+        <name>sample_id</name>
+      </field>
+      <field>
+        <name>file_name</name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

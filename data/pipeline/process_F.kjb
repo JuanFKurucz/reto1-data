@@ -294,7 +294,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>/Users/andres/Google Drive/Facultad/Reto - Solución Bioinformatica/Integración/Reto/load_F.ktr</filename>
+      <filename>${Internal.Job.Filename.Directory}/load_F.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
