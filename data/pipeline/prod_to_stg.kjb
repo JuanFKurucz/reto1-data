@@ -1114,7 +1114,7 @@ a:   [stg].[bioinformatica_project]</description>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>176</xloc>
+      <xloc>240</xloc>
       <yloc>48</yloc>
       <attributes_kjc/>
     </entry>
@@ -1188,6 +1188,46 @@ CREATE TABLE IF NOT EXISTS tax_species
       <nr>0</nr>
       <xloc>768</xloc>
       <yloc>1056</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Startup STG</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>CREATE SCHEMA IF NOT EXISTS public AUTHORIZATION ${DB_STG_USER};
+
+CREATE TABLE IF NOT EXISTS public.config_control
+(
+    last_check timestamp with time zone
+);
+
+INSERT INTO public.config_control (last_check) SELECT '1990-01-01 01:01:01-03' WHERE NOT EXISTS (SELECT * FROM public.config_control);
+
+CREATE TABLE IF NOT EXISTS public.csvload_control
+(
+    fastq_id integer NOT NULL,
+    project_id integer NOT NULL,
+    sample_id integer NOT NULL,
+    experiment_id integer NOT NULL,
+    path text COLLATE pg_catalog."default",
+    uploaded_tax_family boolean,
+    uploaded_tax_genus boolean,
+    uploaded_tax_order boolean,
+    uploaded_tax_species boolean,
+    CONSTRAINT csvload_control_pkey PRIMARY KEY (fastq_id)
+);
+</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>128</xloc>
+      <yloc>48</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
@@ -1364,15 +1404,6 @@ CREATE TABLE IF NOT EXISTS tax_species
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Start</from>
-      <to>Transformation</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
       <from>Transformation</from>
       <to>Set variables</to>
       <from_nr>0</from_nr>
@@ -1402,6 +1433,24 @@ CREATE TABLE IF NOT EXISTS tax_species
     <hop>
       <from>Create tax tables</from>
       <to>Delete csvload uploaded files</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>Startup STG</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Startup STG</from>
+      <to>Transformation</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

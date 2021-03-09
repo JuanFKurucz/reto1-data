@@ -355,8 +355,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>50</xloc>
-      <yloc>50</yloc>
+      <xloc>16</xloc>
+      <yloc>48</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -364,7 +364,7 @@
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_fast5]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_fast5
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_fast5
 (
   created TIMESTAMP
 , removed TIMESTAMP
@@ -383,8 +383,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>250</xloc>
-      <yloc>50</yloc>
+      <xloc>320</xloc>
+      <yloc>48</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -433,7 +433,7 @@ to:   [datawarehouse].[bioinformatica_fast5]</description>
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_fastq]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_fastq
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_fastq
 (
   created TIMESTAMP
 , removed TIMESTAMP
@@ -501,7 +501,7 @@ to:   [datawarehouse].[bioinformatica_fastq]</description>
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_fastqfile]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_fastqfile
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_fastqfile
 (
   id INTEGER
 , created TIMESTAMP
@@ -568,7 +568,7 @@ to:   [datawarehouse].[bioinformatica_fastqfile]</description>
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_sample]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_sample
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_sample
 (
   created TIMESTAMP
 , removed TIMESTAMP
@@ -637,7 +637,7 @@ to:   [datawarehouse].[bioinformatica_sample]</description>
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_dynamicattributedefinition]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_dynamicattributedefinition
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_dynamicattributedefinition
 (
   created TIMESTAMP
 , removed TIMESTAMP
@@ -704,7 +704,7 @@ to:   [datawarehouse].[bioinformatica_dynamicattributedefinition]</description>
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_client]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_client
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_client
 (
   created TIMESTAMP
 , removed TIMESTAMP
@@ -773,7 +773,7 @@ to:   [datawarehouse].[bioinformatica_client]</description>
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_contact]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_contact
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_contact
 (
   created TIMESTAMP
 , removed TIMESTAMP
@@ -843,7 +843,7 @@ to:   [datawarehouse].[bioinformatica_contact]</description>
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_dynamicattributeinstance]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_dynamicattributeinstance
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_dynamicattributeinstance
 (
   created TIMESTAMP
 , removed TIMESTAMP
@@ -911,7 +911,7 @@ to:   [datawarehouse].[bioinformatica_dynamicattributeinstance]</description>
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_experiment]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_experiment
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_experiment
 (
   created TIMESTAMP
 , removed TIMESTAMP
@@ -983,7 +983,7 @@ to:   [datawarehouse].[bioinformatica_experiment]</description>
       <description>This executes the SQL to create table [datawarehouse].[bioinformatica_project]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS bioinformatica_project
+      <sql>CREATE TABLE IF NOT EXISTS public.bioinformatica_project
 (
   created TIMESTAMP
 , removed TIMESTAMP
@@ -1047,17 +1047,26 @@ to:   [datawarehouse].[bioinformatica_project]</description>
       <yloc>950</yloc>
       <attributes_kjc/>
     </entry>
+    <entry>
+      <name>Startup Datawarehouse</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>CREATE SCHEMA IF NOT EXISTS public AUTHORIZATION ${DB_DWH_USER};</sql>
+      <useVariableSubstitution>T</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>datawarehouse</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>128</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc/>
+    </entry>
   </entries>
   <hops>
-    <hop>
-      <from>Start</from>
-      <to>Create table [bioinformatica_fast5]</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
     <hop>
       <from>Create table [bioinformatica_fast5]</from>
       <to>Copy data to [bioinformatica_fast5]</to>
@@ -1223,6 +1232,24 @@ to:   [datawarehouse].[bioinformatica_project]</description>
     <hop>
       <from>Create table [bioinformatica_project]</from>
       <to>Copy data to [bioinformatica_project]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>Startup Datawarehouse</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Startup Datawarehouse</from>
+      <to>Create table [bioinformatica_fast5]</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

@@ -333,7 +333,7 @@
       <description>This executes the SQL to create table [datawarehouse].[tax_species]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS tax_species
+      <sql>CREATE TABLE IF NOT EXISTS public.tax_species
 (
   taxid TEXT
 , rel_abundance DOUBLE PRECISION
@@ -399,7 +399,7 @@ to:   [datawarehouse].[tax_species]</description>
       <description>This executes the SQL to create table [datawarehouse].[tax_genus]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS tax_genus
+      <sql>CREATE TABLE IF NOT EXISTS public.tax_genus
 (
   taxid TEXT
 , rel_abundance DOUBLE PRECISION
@@ -465,7 +465,7 @@ to:   [datawarehouse].[tax_genus]</description>
       <description>This executes the SQL to create table [datawarehouse].[tax_family]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS tax_family
+      <sql>CREATE TABLE IF NOT EXISTS public.tax_family
 (
   taxid TEXT
 , rel_abundance DOUBLE PRECISION
@@ -531,7 +531,7 @@ to:   [datawarehouse].[tax_family]</description>
       <description>This executes the SQL to create table [datawarehouse].[tax_order]</description>
       <type>SQL</type>
       <attributes/>
-      <sql>CREATE TABLE IF NOT EXISTS tax_order
+      <sql>CREATE TABLE IF NOT EXISTS public.tax_order
 (
   taxid TEXT
 , rel_abundance DOUBLE PRECISION

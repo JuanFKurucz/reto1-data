@@ -2,7 +2,9 @@
 
 ## Required to run
 
-A database named `stg` has to be created aand the following tables have to be created manually too:
+A database named `stg` and another one named `datawarehouse` will be created if not existent. If manually created a public schema has to be created for it to work.
+
+To manually create it run the following scripts:
 
 ```sql
 CREATE TABLE public.config_control
