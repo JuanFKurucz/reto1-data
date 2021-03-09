@@ -372,7 +372,6 @@
 , "name" VARCHAR(240)
 , date_created TIMESTAMP
 , file VARCHAR(100)
-, experiment_id INTEGER
 , sample_id INTEGER
 )
 ;</sql>
@@ -519,8 +518,8 @@ to:   [datawarehouse].[bioinformatica_fastq]</description>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>250</xloc>
-      <yloc>250</yloc>
+      <xloc>256</xloc>
+      <yloc>240</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -993,7 +992,6 @@ to:   [datawarehouse].[bioinformatica_experiment]</description>
 , description TEXT
 , create_date TIMESTAMP
 , contact_id INTEGER
-, projects_id INTEGER
 )
 ;</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
