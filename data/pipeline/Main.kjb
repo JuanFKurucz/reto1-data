@@ -385,7 +385,7 @@
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Copy prod tables to stg</name>
+      <name>Copy prod tables to stg and prepare stg</name>
       <description/>
       <type>JOB</type>
       <attributes/>
@@ -456,7 +456,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>432</xloc>
+      <xloc>464</xloc>
       <yloc>32</yloc>
       <attributes_kjc/>
     </entry>
@@ -495,7 +495,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
+      <xloc>688</xloc>
       <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
@@ -534,7 +534,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>432</xloc>
+      <xloc>464</xloc>
       <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
@@ -571,7 +571,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
+      <xloc>688</xloc>
       <yloc>32</yloc>
       <attributes_kjc/>
     </entry>
@@ -655,7 +655,7 @@
   <hops>
     <hop>
       <from>Start</from>
-      <to>Copy prod tables to stg</to>
+      <to>Copy prod tables to stg and prepare stg</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -663,7 +663,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Copy prod tables to stg</from>
+      <from>Copy prod tables to stg and prepare stg</from>
       <to>Update last_check value</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
