@@ -490,7 +490,7 @@
   <order>
     <hop>
       <from>Entrada Tabla</from>
-      <to>Insertar / Actualizar</to>
+      <to>Execute SQL script</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -553,8 +553,8 @@
     </GUI>
   </step>
   <step>
-    <name>Insertar / Actualizar</name>
-    <type>InsertUpdate</type>
+    <name>Execute SQL script</name>
+    <type>ExecSQL</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -564,23 +564,21 @@
       <schema_name/>
     </partitioning>
     <connection>stg</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>config_control</table>
-      <key>
-        <name/>
-        <field>last_check</field>
-        <condition>IS NOT NULL</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>last_check</name>
-        <rename>max_created</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
+    <execute_each_row>Y</execute_each_row>
+    <single_statement>Y</single_statement>
+    <replace_variables>N</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>UPDATE config_control SET last_check = COALESCE(?,last_check) WHERE 1=1;</sql>
+    <set_params>Y</set_params>
+    <insert_field/>
+    <update_field/>
+    <delete_field/>
+    <read_field/>
+    <arguments>
+      <argument>
+        <name>max_created</name>
+      </argument>
+    </arguments>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -590,7 +588,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
+      <xloc>464</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
