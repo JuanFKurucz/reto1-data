@@ -334,10 +334,10 @@
       <attributes/>
       <sql>CREATE TABLE IF NOT EXISTS tax_species
 (
-  id INTEGER
-, taxid TEXT
+  taxid TEXT
 , rel_abundance DOUBLE PRECISION
 , fastq_id DOUBLE PRECISION
+, UNIQUE (taxid, fastq_id)
 )
 ;</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
@@ -373,7 +373,7 @@ to:   [datawarehouse].[tax_species]</description>
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel/>
+      <loglevel>Basic</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
@@ -383,6 +383,9 @@ to:   [datawarehouse].[tax_species]</description>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration/>
       <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
@@ -397,10 +400,10 @@ to:   [datawarehouse].[tax_species]</description>
       <attributes/>
       <sql>CREATE TABLE IF NOT EXISTS tax_genus
 (
-  id INTEGER
-, taxid TEXT
+  taxid TEXT
 , rel_abundance DOUBLE PRECISION
 , fastq_id DOUBLE PRECISION
+, UNIQUE (taxid, fastq_id)
 )
 ;</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
@@ -436,7 +439,7 @@ to:   [datawarehouse].[tax_genus]</description>
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel/>
+      <loglevel>Basic</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
@@ -446,6 +449,9 @@ to:   [datawarehouse].[tax_genus]</description>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration/>
       <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
@@ -460,10 +466,10 @@ to:   [datawarehouse].[tax_genus]</description>
       <attributes/>
       <sql>CREATE TABLE IF NOT EXISTS tax_family
 (
-  id INTEGER
-, taxid TEXT
+  taxid TEXT
 , rel_abundance DOUBLE PRECISION
 , fastq_id DOUBLE PRECISION
+, UNIQUE (taxid, fastq_id)
 )
 ;</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
@@ -499,7 +505,7 @@ to:   [datawarehouse].[tax_family]</description>
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel/>
+      <loglevel>Basic</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
@@ -509,6 +515,9 @@ to:   [datawarehouse].[tax_family]</description>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration/>
       <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
@@ -523,10 +532,10 @@ to:   [datawarehouse].[tax_family]</description>
       <attributes/>
       <sql>CREATE TABLE IF NOT EXISTS tax_order
 (
-  id INTEGER
-, taxid TEXT
+  taxid TEXT
 , rel_abundance DOUBLE PRECISION
 , fastq_id DOUBLE PRECISION
+, UNIQUE (taxid, fastq_id)
 )
 ;</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
@@ -562,7 +571,7 @@ to:   [datawarehouse].[tax_order]</description>
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel/>
+      <loglevel>Basic</loglevel>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
@@ -572,6 +581,9 @@ to:   [datawarehouse].[tax_order]</description>
       <logging_remote_work>N</logging_remote_work>
       <run_configuration/>
       <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>

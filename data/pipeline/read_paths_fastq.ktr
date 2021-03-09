@@ -584,10 +584,10 @@
     <sql>SELECT 
 fastq_id, 
 CONCAT('${Internal.Job.Filename.Directory}',path) as path, 
-CASE WHEN uploaded_tax_family != 't' THEN '.*_F\.csv' ELSE 'null' END f_wildcard,
-CASE WHEN uploaded_tax_genus != 't' THEN '.*_G\.csv' ELSE 'null' END g_wildcard,
-CASE WHEN uploaded_tax_order != 't' THEN '.*_O\.csv' ELSE 'null' END o_wildcard,
-CASE WHEN uploaded_tax_species != 't' THEN '.*_S\.csv' ELSE 'null' END s_wildcard
+CASE WHEN uploaded_tax_family != 't' or uploaded_tax_family IS NULL THEN '.*_F\.csv' ELSE 'null' END f_wildcard,
+CASE WHEN uploaded_tax_genus != 't' or uploaded_tax_genus IS NULL THEN '.*_G\.csv' ELSE 'null' END g_wildcard,
+CASE WHEN uploaded_tax_order != 't' or uploaded_tax_order IS NULL THEN '.*_O\.csv' ELSE 'null' END o_wildcard,
+CASE WHEN uploaded_tax_species != 't' or uploaded_tax_species IS NULL THEN '.*_S\.csv' ELSE 'null' END s_wildcard
 FROM csvload_control</sql>
     <limit>0</limit>
     <lookup/>

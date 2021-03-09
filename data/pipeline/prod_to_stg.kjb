@@ -1126,37 +1126,37 @@ a:   [stg].[bioinformatica_project]</description>
       <sql>drop TABLE if exists tax_family;
 CREATE TABLE IF NOT EXISTS tax_family
 (
-  id INTEGER
-, taxid TEXT
+  taxid TEXT
 , rel_abundance DOUBLE PRECISION
 , fastq_id DOUBLE PRECISION
+, UNIQUE (taxid, fastq_id)
 )
 ;
 drop TABLE if exists tax_genus;
 CREATE TABLE IF NOT EXISTS tax_genus
 (
-  id INTEGER
-, taxid TEXT
+  taxid TEXT
 , rel_abundance DOUBLE PRECISION
 , fastq_id DOUBLE PRECISION
+, UNIQUE (taxid, fastq_id)
 )
 ;
 drop TABLE if exists tax_order;
 CREATE TABLE IF NOT EXISTS tax_order
 (
-  id INTEGER
-, taxid TEXT
+  taxid TEXT
 , rel_abundance DOUBLE PRECISION
 , fastq_id DOUBLE PRECISION
+, UNIQUE (taxid, fastq_id)
 )
 ;
 drop TABLE if exists tax_species;
 CREATE TABLE IF NOT EXISTS tax_species
 (
-  id INTEGER
-, taxid TEXT
+  taxid TEXT
 , rel_abundance DOUBLE PRECISION
 , fastq_id DOUBLE PRECISION
+, UNIQUE (taxid, fastq_id)
 )
 ;</sql>
       <useVariableSubstitution>F</useVariableSubstitution>
