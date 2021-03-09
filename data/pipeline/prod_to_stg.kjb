@@ -1118,6 +1118,78 @@ a:   [stg].[bioinformatica_project]</description>
       <yloc>48</yloc>
       <attributes_kjc/>
     </entry>
+    <entry>
+      <name>Create tax tables</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists tax_family;
+CREATE TABLE IF NOT EXISTS tax_family
+(
+  id INTEGER
+, taxid TEXT
+, rel_abundance DOUBLE PRECISION
+, fastq_id DOUBLE PRECISION
+)
+;
+drop TABLE if exists tax_genus;
+CREATE TABLE IF NOT EXISTS tax_genus
+(
+  id INTEGER
+, taxid TEXT
+, rel_abundance DOUBLE PRECISION
+, fastq_id DOUBLE PRECISION
+)
+;
+drop TABLE if exists tax_order;
+CREATE TABLE IF NOT EXISTS tax_order
+(
+  id INTEGER
+, taxid TEXT
+, rel_abundance DOUBLE PRECISION
+, fastq_id DOUBLE PRECISION
+)
+;
+drop TABLE if exists tax_species;
+CREATE TABLE IF NOT EXISTS tax_species
+(
+  id INTEGER
+, taxid TEXT
+, rel_abundance DOUBLE PRECISION
+, fastq_id DOUBLE PRECISION
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>512</xloc>
+      <yloc>1040</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Delete csvload uploaded files</name>
+      <description/>
+      <type>SQL</type>
+      <attributes/>
+      <sql>DELETE FROM public.csvload_control
+	WHERE uploaded_tax_family='t' AND uploaded_tax_genus='t' AND uploaded_tax_order = 't' AND uploaded_tax_species='t';</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>768</xloc>
+      <yloc>1056</yloc>
+      <attributes_kjc/>
+    </entry>
   </entries>
   <hops>
     <hop>
@@ -1312,6 +1384,24 @@ a:   [stg].[bioinformatica_project]</description>
     <hop>
       <from>Set variables</from>
       <to>Crear tabla [bioinformatica_fast5]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_project]</from>
+      <to>Create tax tables</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Create tax tables</from>
+      <to>Delete csvload uploaded files</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

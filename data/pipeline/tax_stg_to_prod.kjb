@@ -1,92 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>Main</name>
+  <name>tax_stg_to_prod</name>
   <description/>
   <extended_description/>
   <job_version/>
-  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
-  <created_date>2021/03/05 20:06:28.092</created_date>
+  <created_date>2021/03/09 16:18:12.859</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2021/03/05 20:06:28.092</modified_date>
+  <modified_date>2021/03/09 16:18:12.859</modified_date>
   <parameters>
-    <parameter>
-      <name>DB_DWH_HOST</name>
-      <default_value>localhost</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_DWH_NAME</name>
-      <default_value>datawarehouse</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_DWH_PASS</name>
-      <default_value>reto_pwd</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_DWH_PORT</name>
-      <default_value>55000</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_DWH_USER</name>
-      <default_value>reto_user</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_PROD_HOST</name>
-      <default_value>localhost</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_PROD_NAME</name>
-      <default_value>reto_db</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_PROD_PASS</name>
-      <default_value>reto_pwd</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_PROD_PORT</name>
-      <default_value>55000</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_PROD_USER</name>
-      <default_value>reto_user</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_STG_HOST</name>
-      <default_value>localhost</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_STG_NAME</name>
-      <default_value>stg</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_STG_PASS</name>
-      <default_value>reto_pwd</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_STG_PORT</name>
-      <default_value>55000</default_value>
-      <description/>
-    </parameter>
-    <parameter>
-      <name>DB_STG_USER</name>
-      <default_value>reto_user</default_value>
-      <description/>
-    </parameter>
-  </parameters>
+    </parameters>
+  <connection>
+    <name>datawarehouse</name>
+    <server>localhost</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>datawarehouse</database>
+    <port>55000</port>
+    <username>reto_user</username>
+    <password>Encrypted 2be98afc86aa7f2e4b91cba7fe182b8de</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>55000</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <slaveservers>
     </slaveservers>
   <job-log-table>
@@ -364,7 +307,7 @@
   <entries>
     <entry>
       <name>Start</name>
-      <description/>
+      <description>A job starts to process here.</description>
       <type>SPECIAL</type>
       <attributes/>
       <start>Y</start>
@@ -380,56 +323,46 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>80</xloc>
-      <yloc>32</yloc>
+      <xloc>50</xloc>
+      <yloc>50</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>prod_to_stg</name>
-      <description/>
-      <type>JOB</type>
+      <name>Create table [tax_species]</name>
+      <description>This executes the SQL to create table [datawarehouse].[tax_species]</description>
+      <type>SQL</type>
       <attributes/>
-      <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>${Internal.Job.Filename.Directory}/prod_to_stg.kjb</filename>
-      <jobname/>
-      <directory/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <set_append_logfile>N</set_append_logfile>
+      <sql>CREATE TABLE IF NOT EXISTS tax_species
+(
+  id INTEGER
+, taxid TEXT
+, rel_abundance DOUBLE PRECISION
+, fastq_id DOUBLE PRECISION
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>datawarehouse</connection>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>240</xloc>
-      <yloc>32</yloc>
+      <xloc>250</xloc>
+      <yloc>50</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>last_check</name>
-      <description/>
+      <name>Copy data to [tax_species]</name>
+      <description>This job entry executes the transformation to copy data
+from: [stg].[tax_species]
+to:   [datawarehouse].[tax_species]</description>
       <type>TRANS</type>
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Job.Filename.Directory}/set_last_check.ktr</filename>
-      <transname/>
+      <filename>${Internal.Job.Filename.Directory}/copy_stgtax_species_to_datawarehouse.ktr</filename>
+      <transname>copy_stgtax_species_to_datawarehouse</transname>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -440,7 +373,7 @@
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel/>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
@@ -448,27 +381,51 @@
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration>Pentaho local</run_configuration>
+      <run_configuration/>
       <suppress_result_data>N</suppress_result_data>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>384</xloc>
-      <yloc>32</yloc>
+      <xloc>650</xloc>
+      <yloc>50</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>save_pending_csv</name>
-      <description/>
+      <name>Create table [tax_genus]</name>
+      <description>This executes the SQL to create table [datawarehouse].[tax_genus]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>CREATE TABLE IF NOT EXISTS tax_genus
+(
+  id INTEGER
+, taxid TEXT
+, rel_abundance DOUBLE PRECISION
+, fastq_id DOUBLE PRECISION
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>datawarehouse</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>250</xloc>
+      <yloc>150</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copy data to [tax_genus]</name>
+      <description>This job entry executes the transformation to copy data
+from: [stg].[tax_genus]
+to:   [datawarehouse].[tax_genus]</description>
       <type>TRANS</type>
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Job.Filename.Directory}/save_pending_csv.ktr</filename>
-      <transname/>
+      <filename>${Internal.Job.Filename.Directory}/copy_stgtax_genus_to_datawarehouse.ktr</filename>
+      <transname>copy_stgtax_genus_to_datawarehouse</transname>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -479,7 +436,7 @@
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel/>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
@@ -487,27 +444,51 @@
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration>Pentaho local</run_configuration>
+      <run_configuration/>
       <suppress_result_data>N</suppress_result_data>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>608</xloc>
-      <yloc>32</yloc>
+      <xloc>650</xloc>
+      <yloc>150</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>load_csv</name>
-      <description/>
+      <name>Create table [tax_family]</name>
+      <description>This executes the SQL to create table [datawarehouse].[tax_family]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>CREATE TABLE IF NOT EXISTS tax_family
+(
+  id INTEGER
+, taxid TEXT
+, rel_abundance DOUBLE PRECISION
+, fastq_id DOUBLE PRECISION
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>datawarehouse</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>250</xloc>
+      <yloc>250</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copy data to [tax_family]</name>
+      <description>This job entry executes the transformation to copy data
+from: [stg].[tax_family]
+to:   [datawarehouse].[tax_family]</description>
       <type>TRANS</type>
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Job.Filename.Directory}/load_csv.ktr</filename>
-      <transname/>
+      <filename>${Internal.Job.Filename.Directory}/copy_stgtax_family_to_datawarehouse.ktr</filename>
+      <transname>copy_stgtax_family_to_datawarehouse</transname>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -518,7 +499,7 @@
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel/>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
@@ -526,66 +507,53 @@
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration>Pentaho local</run_configuration>
+      <run_configuration/>
       <suppress_result_data>N</suppress_result_data>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>32</yloc>
+      <xloc>650</xloc>
+      <yloc>250</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>stg_to_dwh</name>
-      <description/>
-      <type>JOB</type>
+      <name>Create table [tax_order]</name>
+      <description>This executes the SQL to create table [datawarehouse].[tax_order]</description>
+      <type>SQL</type>
       <attributes/>
-      <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>${Internal.Job.Filename.Directory}/stg_to_dwh.kjb</filename>
-      <jobname/>
-      <directory/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <set_append_logfile>N</set_append_logfile>
+      <sql>CREATE TABLE IF NOT EXISTS tax_order
+(
+  id INTEGER
+, taxid TEXT
+, rel_abundance DOUBLE PRECISION
+, fastq_id DOUBLE PRECISION
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>datawarehouse</connection>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>496</xloc>
-      <yloc>32</yloc>
+      <xloc>250</xloc>
+      <yloc>350</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Read paths fastq and store them</name>
-      <description/>
+      <name>Copy data to [tax_order]</name>
+      <description>This job entry executes the transformation to copy data
+from: [stg].[tax_order]
+to:   [datawarehouse].[tax_order]</description>
       <type>TRANS</type>
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Job.Filename.Directory}/read_paths_fastq.ktr</filename>
-      <transname/>
+      <filename>${Internal.Job.Filename.Directory}/copy_stgtax_order_to_datawarehouse.ktr</filename>
+      <transname>copy_stgtax_order_to_datawarehouse</transname>
       <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>Y</params_from_previous>
+      <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
       <clear_rows>N</clear_rows>
       <clear_files>N</clear_files>
@@ -594,7 +562,7 @@
       <logext/>
       <add_date>N</add_date>
       <add_time>N</add_time>
-      <loglevel>Basic</loglevel>
+      <loglevel/>
       <cluster>N</cluster>
       <slave_server_name/>
       <set_append_logfile>N</set_append_logfile>
@@ -602,60 +570,20 @@
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration>Pentaho local</run_configuration>
+      <run_configuration/>
       <suppress_result_data>N</suppress_result_data>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>144</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>tax stg_to_prod</name>
-      <description/>
-      <type>JOB</type>
-      <attributes/>
-      <specification_method>filename</specification_method>
-      <job_object_id/>
-      <filename>${Internal.Job.Filename.Directory}/tax_stg_to_prod.kjb</filename>
-      <jobname/>
-      <directory/>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>N</params_from_previous>
-      <exec_per_row>N</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>Y</pass_all_parameters>
-      </parameters>
-      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>240</yloc>
+      <xloc>650</xloc>
+      <yloc>350</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
   <hops>
     <hop>
       <from>Start</from>
-      <to>prod_to_stg</to>
+      <to>Create table [tax_species]</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -663,8 +591,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>prod_to_stg</from>
-      <to>last_check</to>
+      <from>Create table [tax_species]</from>
+      <to>Copy data to [tax_species]</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -672,8 +600,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>save_pending_csv</from>
-      <to>load_csv</to>
+      <from>Copy data to [tax_species]</from>
+      <to>Create table [tax_genus]</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -681,8 +609,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>last_check</from>
-      <to>stg_to_dwh</to>
+      <from>Create table [tax_genus]</from>
+      <to>Copy data to [tax_genus]</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -690,8 +618,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>stg_to_dwh</from>
-      <to>save_pending_csv</to>
+      <from>Copy data to [tax_genus]</from>
+      <to>Create table [tax_family]</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -699,8 +627,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>load_csv</from>
-      <to>Read paths fastq and store them</to>
+      <from>Create table [tax_family]</from>
+      <to>Copy data to [tax_family]</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -708,8 +636,17 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Read paths fastq and store them</from>
-      <to>tax stg_to_prod</to>
+      <from>Copy data to [tax_family]</from>
+      <to>Create table [tax_order]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Create table [tax_order]</from>
+      <to>Copy data to [tax_order]</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
