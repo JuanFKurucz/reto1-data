@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job>
+  <name>prod_to_stg</name>
+  <description/>
+  <extended_description/>
+  <job_version/>
+  <directory>/</directory>
+  <created_user>-</created_user>
+  <created_date>2021/03/04 21:56:26.685</created_date>
+  <modified_user>-</modified_user>
+  <modified_date>2021/03/04 21:56:26.685</modified_date>
+  <parameters>
+    </parameters>
+  <connection>
+    <name>stg</name>
+    <server>${DB_STG_HOST}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${DB_STG_NAME}</database>
+    <port>${DB_STG_PORT}</port>
+    <username>${DB_STG_USER}</username>
+    <password>${DB_STG_PASS}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>${DB_STG_PORT}</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
+  <slaveservers>
+    </slaveservers>
+  <job-log-table>
+    <connection/>
+    <schema/>
+    <table/>
+    <size_limit_lines/>
+    <interval/>
+    <timeout_days/>
+    <field>
+      <id>ID_JOB</id>
+      <enabled>Y</enabled>
+      <name>ID_JOB</name>
+    </field>
+    <field>
+      <id>CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>JOBNAME</id>
+      <enabled>Y</enabled>
+      <name>JOBNAME</name>
+    </field>
+    <field>
+      <id>STATUS</id>
+      <enabled>Y</enabled>
+      <name>STATUS</name>
+    </field>
+    <field>
+      <id>LINES_READ</id>
+      <enabled>Y</enabled>
+      <name>LINES_READ</name>
+    </field>
+    <field>
+      <id>LINES_WRITTEN</id>
+      <enabled>Y</enabled>
+      <name>LINES_WRITTEN</name>
+    </field>
+    <field>
+      <id>LINES_UPDATED</id>
+      <enabled>Y</enabled>
+      <name>LINES_UPDATED</name>
+    </field>
+    <field>
+      <id>LINES_INPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_INPUT</name>
+    </field>
+    <field>
+      <id>LINES_OUTPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_OUTPUT</name>
+    </field>
+    <field>
+      <id>LINES_REJECTED</id>
+      <enabled>Y</enabled>
+      <name>LINES_REJECTED</name>
+    </field>
+    <field>
+      <id>ERRORS</id>
+      <enabled>Y</enabled>
+      <name>ERRORS</name>
+    </field>
+    <field>
+      <id>STARTDATE</id>
+      <enabled>Y</enabled>
+      <name>STARTDATE</name>
+    </field>
+    <field>
+      <id>ENDDATE</id>
+      <enabled>Y</enabled>
+      <name>ENDDATE</name>
+    </field>
+    <field>
+      <id>LOGDATE</id>
+      <enabled>Y</enabled>
+      <name>LOGDATE</name>
+    </field>
+    <field>
+      <id>DEPDATE</id>
+      <enabled>Y</enabled>
+      <name>DEPDATE</name>
+    </field>
+    <field>
+      <id>REPLAYDATE</id>
+      <enabled>Y</enabled>
+      <name>REPLAYDATE</name>
+    </field>
+    <field>
+      <id>LOG_FIELD</id>
+      <enabled>Y</enabled>
+      <name>LOG_FIELD</name>
+    </field>
+    <field>
+      <id>EXECUTING_SERVER</id>
+      <enabled>N</enabled>
+      <name>EXECUTING_SERVER</name>
+    </field>
+    <field>
+      <id>EXECUTING_USER</id>
+      <enabled>N</enabled>
+      <name>EXECUTING_USER</name>
+    </field>
+    <field>
+      <id>START_JOB_ENTRY</id>
+      <enabled>N</enabled>
+      <name>START_JOB_ENTRY</name>
+    </field>
+    <field>
+      <id>CLIENT</id>
+      <enabled>N</enabled>
+      <name>CLIENT</name>
+    </field>
+  </job-log-table>
+  <jobentry-log-table>
+    <connection/>
+    <schema/>
+    <table/>
+    <timeout_days/>
+    <field>
+      <id>ID_BATCH</id>
+      <enabled>Y</enabled>
+      <name>ID_BATCH</name>
+    </field>
+    <field>
+      <id>CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>LOG_DATE</id>
+      <enabled>Y</enabled>
+      <name>LOG_DATE</name>
+    </field>
+    <field>
+      <id>JOBNAME</id>
+      <enabled>Y</enabled>
+      <name>TRANSNAME</name>
+    </field>
+    <field>
+      <id>JOBENTRYNAME</id>
+      <enabled>Y</enabled>
+      <name>STEPNAME</name>
+    </field>
+    <field>
+      <id>LINES_READ</id>
+      <enabled>Y</enabled>
+      <name>LINES_READ</name>
+    </field>
+    <field>
+      <id>LINES_WRITTEN</id>
+      <enabled>Y</enabled>
+      <name>LINES_WRITTEN</name>
+    </field>
+    <field>
+      <id>LINES_UPDATED</id>
+      <enabled>Y</enabled>
+      <name>LINES_UPDATED</name>
+    </field>
+    <field>
+      <id>LINES_INPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_INPUT</name>
+    </field>
+    <field>
+      <id>LINES_OUTPUT</id>
+      <enabled>Y</enabled>
+      <name>LINES_OUTPUT</name>
+    </field>
+    <field>
+      <id>LINES_REJECTED</id>
+      <enabled>Y</enabled>
+      <name>LINES_REJECTED</name>
+    </field>
+    <field>
+      <id>ERRORS</id>
+      <enabled>Y</enabled>
+      <name>ERRORS</name>
+    </field>
+    <field>
+      <id>RESULT</id>
+      <enabled>Y</enabled>
+      <name>RESULT</name>
+    </field>
+    <field>
+      <id>NR_RESULT_ROWS</id>
+      <enabled>Y</enabled>
+      <name>NR_RESULT_ROWS</name>
+    </field>
+    <field>
+      <id>NR_RESULT_FILES</id>
+      <enabled>Y</enabled>
+      <name>NR_RESULT_FILES</name>
+    </field>
+    <field>
+      <id>LOG_FIELD</id>
+      <enabled>N</enabled>
+      <name>LOG_FIELD</name>
+    </field>
+    <field>
+      <id>COPY_NR</id>
+      <enabled>N</enabled>
+      <name>COPY_NR</name>
+    </field>
+  </jobentry-log-table>
+  <channel-log-table>
+    <connection/>
+    <schema/>
+    <table/>
+    <timeout_days/>
+    <field>
+      <id>ID_BATCH</id>
+      <enabled>Y</enabled>
+      <name>ID_BATCH</name>
+    </field>
+    <field>
+      <id>CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>LOG_DATE</id>
+      <enabled>Y</enabled>
+      <name>LOG_DATE</name>
+    </field>
+    <field>
+      <id>LOGGING_OBJECT_TYPE</id>
+      <enabled>Y</enabled>
+      <name>LOGGING_OBJECT_TYPE</name>
+    </field>
+    <field>
+      <id>OBJECT_NAME</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_NAME</name>
+    </field>
+    <field>
+      <id>OBJECT_COPY</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_COPY</name>
+    </field>
+    <field>
+      <id>REPOSITORY_DIRECTORY</id>
+      <enabled>Y</enabled>
+      <name>REPOSITORY_DIRECTORY</name>
+    </field>
+    <field>
+      <id>FILENAME</id>
+      <enabled>Y</enabled>
+      <name>FILENAME</name>
+    </field>
+    <field>
+      <id>OBJECT_ID</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_ID</name>
+    </field>
+    <field>
+      <id>OBJECT_REVISION</id>
+      <enabled>Y</enabled>
+      <name>OBJECT_REVISION</name>
+    </field>
+    <field>
+      <id>PARENT_CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>PARENT_CHANNEL_ID</name>
+    </field>
+    <field>
+      <id>ROOT_CHANNEL_ID</id>
+      <enabled>Y</enabled>
+      <name>ROOT_CHANNEL_ID</name>
+    </field>
+  </channel-log-table>
+  <pass_batchid>N</pass_batchid>
+  <shared_objects_file/>
+  <entries>
+    <entry>
+      <name>Start</name>
+      <description>Se inicia un trabajo aqui.</description>
+      <type>SPECIAL</type>
+      <attributes/>
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>32</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_fast5]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_fast5]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop table if exists bioinformatica_fast5 ;
+CREATE TABLE bioinformatica_fast5
+(
+  created TIMESTAMP
+, removed TIMESTAMP
+, fast5_id INTEGER
+, "name" VARCHAR(240)
+, date_created TIMESTAMP
+, file VARCHAR(100)
+, experiment_id INTEGER
+, sample_id INTEGER
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_fast5]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_fast5]
+a:   [stg].[bioinformatica_fast5]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_fast5_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_fast5_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_fastq]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_fastq]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists bioinformatica_fastq;
+CREATE TABLE bioinformatica_fastq
+(
+  created TIMESTAMP
+, removed TIMESTAMP
+, fastQ_id INTEGER
+, "name" VARCHAR(240)
+, date_created TIMESTAMP
+, experiment_id INTEGER
+, sample_id INTEGER
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>144</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_fastq]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_fastq]
+a:   [stg].[bioinformatica_fastq]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_fastq_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_fastq_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>144</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_fastqfile]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_fastqfile]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists bioinformatica_fastqfile;
+CREATE TABLE bioinformatica_fastqfile
+(
+  id INTEGER
+, created TIMESTAMP
+, removed TIMESTAMP
+, file VARCHAR(100)
+, fastQ_id INTEGER
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>240</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_fastqfile]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_fastqfile]
+a:   [stg].[bioinformatica_fastqfile]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_fastqfile_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_fastqfile_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>240</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_sample]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_sample]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists bioinformatica_sample;
+CREATE TABLE bioinformatica_sample
+(
+  created TIMESTAMP
+, removed TIMESTAMP
+, sample_id INTEGER
+, date_created TIMESTAMP
+, responsible VARCHAR(120)
+, "location" VARCHAR(120)
+, experiment_id INTEGER
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>336</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_sample]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_sample]
+a:   [stg].[bioinformatica_sample]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_sample_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_sample_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>336</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_dynamicattributedefinition]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_dynamicattributedefinition]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists bioinformatica_dynamicattributedefinition;
+CREATE TABLE bioinformatica_dynamicattributedefinition
+(
+  created TIMESTAMP
+, removed TIMESTAMP
+, dynamicAttributeDef_id INTEGER
+, attribute_name VARCHAR(120)
+, attribute_description TEXT
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>448</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_dynamicattributedefinition]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_dynamicattributedefinition]
+a:   [stg].[bioinformatica_dynamicattributedefinition]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_dynamicattributedefinition_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_dynamicattributedefinition_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>448</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_client]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_client]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists bioinformatica_client;
+CREATE TABLE bioinformatica_client
+(
+  created TIMESTAMP
+, removed TIMESTAMP
+, client_id INTEGER
+, "name" VARCHAR(200)
+, address VARCHAR(200)
+, email VARCHAR(200)
+, phone VARCHAR(200)
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>544</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_client]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_client]
+a:   [stg].[bioinformatica_client]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_client_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_client_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>544</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_dynamicattributeinstance]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_dynamicattributeinstance]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists bioinformatica_dynamicattributeinstance;
+CREATE TABLE bioinformatica_dynamicattributeinstance
+(
+  created TIMESTAMP
+, removed TIMESTAMP
+, dynamicAttributeInst_id INTEGER
+, attribute_value VARCHAR(120)
+, attribute_type_id INTEGER
+, experiment_attributes_id INTEGER
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>640</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_dynamicattributeinstance]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_dynamicattributeinstance]
+a:   [stg].[bioinformatica_dynamicattributeinstance]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_dynamicattributeinstance_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_dynamicattributeinstance_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>640</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_contact]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_contact]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists bioinformatica_contact;
+CREATE TABLE bioinformatica_contact
+(
+  created TIMESTAMP
+, removed TIMESTAMP
+, contact_id INTEGER
+, "name" VARCHAR(200)
+, last_name VARCHAR(200)
+, email VARCHAR(200)
+, phone VARCHAR(200)
+, client_id INTEGER
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>736</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_contact]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_contact]
+a:   [stg].[bioinformatica_contact]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_contact_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_contact_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>736</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_experiment]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_experiment]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists bioinformatica_experiment;
+CREATE TABLE bioinformatica_experiment
+(
+  created TIMESTAMP
+, removed TIMESTAMP
+, experiment_id INTEGER
+, "name" VARCHAR(120)
+, place VARCHAR(200)
+, "date" TIMESTAMP
+, "location" VARCHAR(200)
+, "state" VARCHAR(120)
+, executionCommands TEXT
+, project_id_id INTEGER
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>848</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_experiment]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_experiment]
+a:   [stg].[bioinformatica_experiment]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_experiment_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_experiment_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>848</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Crear tabla [bioinformatica_project]</name>
+      <description>Esto ejecuta SQL para crear la tabla [stg].[bioinformatica_project]</description>
+      <type>SQL</type>
+      <attributes/>
+      <sql>drop TABLE if exists bioinformatica_project;
+CREATE TABLE bioinformatica_project
+(
+  created TIMESTAMP
+, removed TIMESTAMP
+, project_id INTEGER
+, "name" VARCHAR(200)
+, description TEXT
+, create_date TIMESTAMP
+, contact_id INTEGER
+, projects_id INTEGER
+)
+;</sql>
+      <useVariableSubstitution>F</useVariableSubstitution>
+      <sqlfromfile>F</sqlfromfile>
+      <sqlfilename/>
+      <sendOneStatement>F</sendOneStatement>
+      <connection>stg</connection>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>528</xloc>
+      <yloc>944</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Copia datos a [bioinformatica_project]</name>
+      <description>Este trabajo ejecuta la transformaci�n para copiar datos
+de: [prod].[bioinformatica_project]
+a:   [stg].[bioinformatica_project]</description>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_project_a_stg.ktr</filename>
+      <transname>copia_prodbioinformatica_project_a_stg</transname>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration/>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>928</xloc>
+      <yloc>944</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Set variables</name>
+      <description/>
+      <type>SET_VARIABLES</type>
+      <attributes/>
+      <replacevars>Y</replacevars>
+      <filename/>
+      <file_variable_type>JVM</file_variable_type>
+      <fields>
+        <field>
+          <variable_name>com.last_check</variable_name>
+          <variable_value>${LAST_CHECK}</variable_value>
+          <variable_type>JVM</variable_type>
+        </field>
+      </fields>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>352</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Transformation</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Entry.Current.Directory}/get_last_ckeck.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>176</xloc>
+      <yloc>48</yloc>
+      <attributes_kjc/>
+    </entry>
+  </entries>
+  <hops>
+    <hop>
+      <from>Crear tabla [bioinformatica_fast5]</from>
+      <to>Copia datos a [bioinformatica_fast5]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_fast5]</from>
+      <to>Crear tabla [bioinformatica_fastq]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Crear tabla [bioinformatica_fastq]</from>
+      <to>Copia datos a [bioinformatica_fastq]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_fastq]</from>
+      <to>Crear tabla [bioinformatica_fastqfile]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Crear tabla [bioinformatica_fastqfile]</from>
+      <to>Copia datos a [bioinformatica_fastqfile]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_fastqfile]</from>
+      <to>Crear tabla [bioinformatica_sample]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Crear tabla [bioinformatica_sample]</from>
+      <to>Copia datos a [bioinformatica_sample]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_sample]</from>
+      <to>Crear tabla [bioinformatica_dynamicattributedefinition]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Crear tabla [bioinformatica_dynamicattributedefinition]</from>
+      <to>Copia datos a [bioinformatica_dynamicattributedefinition]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_dynamicattributedefinition]</from>
+      <to>Crear tabla [bioinformatica_client]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Crear tabla [bioinformatica_client]</from>
+      <to>Copia datos a [bioinformatica_client]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_client]</from>
+      <to>Crear tabla [bioinformatica_dynamicattributeinstance]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Crear tabla [bioinformatica_dynamicattributeinstance]</from>
+      <to>Copia datos a [bioinformatica_dynamicattributeinstance]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_dynamicattributeinstance]</from>
+      <to>Crear tabla [bioinformatica_contact]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Crear tabla [bioinformatica_contact]</from>
+      <to>Copia datos a [bioinformatica_contact]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_contact]</from>
+      <to>Crear tabla [bioinformatica_experiment]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Crear tabla [bioinformatica_experiment]</from>
+      <to>Copia datos a [bioinformatica_experiment]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Copia datos a [bioinformatica_experiment]</from>
+      <to>Crear tabla [bioinformatica_project]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Crear tabla [bioinformatica_project]</from>
+      <to>Copia datos a [bioinformatica_project]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>Transformation</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Transformation</from>
+      <to>Set variables</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Set variables</from>
+      <to>Crear tabla [bioinformatica_fast5]</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+  </hops>
+  <notepads>
+  </notepads>
+  <attributes/>
+</job>
