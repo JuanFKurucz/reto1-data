@@ -615,13 +615,13 @@
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>tax stg_to_prod</name>
+      <name>tax stg_to_dwh</name>
       <description/>
       <type>JOB</type>
       <attributes/>
       <specification_method>filename</specification_method>
       <job_object_id/>
-      <filename>${Internal.Job.Filename.Directory}/tax_stg_to_prod.kjb</filename>
+      <filename>${Internal.Job.Filename.Directory}/tax_stg_to_dwh.kjb</filename>
       <jobname/>
       <directory/>
       <arg_from_previous>N</arg_from_previous>
@@ -709,7 +709,7 @@
     </hop>
     <hop>
       <from>Read paths fastq and store them</from>
-      <to>tax stg_to_prod</to>
+      <to>tax stg_to_dwh</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
