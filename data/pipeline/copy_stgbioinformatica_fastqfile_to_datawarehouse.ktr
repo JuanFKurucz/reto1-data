@@ -1,89 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>load_csv</name>
+    <name>copy_stgbioinformatica_fastqfile_to_datawarehouse</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
-      <parameter>
-        <name>DB_DWH_HOST</name>
-        <default_value>localhost</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_DWH_NAME</name>
-        <default_value>datawarehouse</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_DWH_PASS</name>
-        <default_value>reto_pwd</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_DWH_PORT</name>
-        <default_value>55000</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_DWH_USER</name>
-        <default_value>reto_user</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_PROD_HOST</name>
-        <default_value>localhost</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_PROD_NAME</name>
-        <default_value>reto_db</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_PROD_PASS</name>
-        <default_value>reto_pwd</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_PROD_PORT</name>
-        <default_value>55000</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_PROD_USER</name>
-        <default_value>reto_user</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_HOST</name>
-        <default_value>localhost</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_NAME</name>
-        <default_value>stg</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_PASS</name>
-        <default_value>reto_pwd</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_PORT</name>
-        <default_value>55000</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_USER</name>
-        <default_value>reto_user</default_value>
-        <description/>
-      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -503,14 +427,54 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2021/03/08 22:08:53.557</created_date>
+    <created_date>2021/03/09 14:33:49.669</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2021/03/08 22:08:53.557</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2021/03/09 14:33:49.669</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>Reads information from table [bioinformatica_fastqfile] on database [stg]
+After that, it writes the information to table [bioinformatica_fastqfile] on database [datawarehouse]</note>
+      <xloc>150</xloc>
+      <yloc>10</yloc>
+      <width>-1</width>
+      <heigth>-1</heigth>
+      <fontname/>
+      <fontsize>-1</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
+  <connection>
+    <name>datawarehouse</name>
+    <server>${DB_DWH_HOST}</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>${DB_DWH_NAME}</database>
+    <port>${DB_DWH_PORT}</port>
+    <username>${DB_DWH_USER}</username>
+    <password>${DB_DWH_PASS}</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>PORT_NUMBER</code>
+       <attribute>${DB_DWH_PORT}</attribute>      </attribute>
+    </attributes>
+  </connection>
   <connection>
     <name>stg</name>
     <server>${DB_STG_HOST}</server>
@@ -525,59 +489,22 @@
     <index_tablespace/>
     <attributes>
       <attribute>
-        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>IS_CLUSTERED</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
         <code>PORT_NUMBER</code>
         <attribute>${DB_STG_PORT}</attribute>
-      </attribute>
-      <attribute>
-        <code>PRESERVE_RESERVED_WORD_CASE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>QUOTE_ALL_FIELDS</code>
-        <attribute>N</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
-        <attribute>Y</attribute>
-      </attribute>
-      <attribute>
-        <code>USE_POOLING</code>
-        <attribute>N</attribute>
       </attribute>
     </attributes>
   </connection>
   <order>
     <hop>
-      <from>Entrada Tabla</from>
-      <to>Valor JavaScript modificado</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Valor JavaScript modificado</from>
-      <to>Salida Tabla</to>
+      <from>read from [bioinformatica_fastqfile]</from>
+      <to>write to [bioinformatica_fastqfile]</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Entrada Tabla</name>
+    <name>read from [bioinformatica_fastqfile]</name>
     <type>TableInput</type>
-    <description/>
+    <description>Reads information from table [bioinformatica_fastqfile] on database [stg]</description>
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
@@ -586,107 +513,13 @@
       <schema_name/>
     </partitioning>
     <connection>stg</connection>
-    <sql>SELECT * FROM csvload_control</sql>
+    <sql>SELECT * FROM bioinformatica_fastqfile</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
     <cached_row_meta_active>N</cached_row_meta_active>
-    <row-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>fast_id</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Entrada Tabla</origin>
-        <comments>fast_id</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_UY</date_format_locale>
-        <date_format_timezone>America/Montevideo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>project_id</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Entrada Tabla</origin>
-        <comments>project_id</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_UY</date_format_locale>
-        <date_format_timezone>America/Montevideo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>sample_id</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Entrada Tabla</origin>
-        <comments>sample_id</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_UY</date_format_locale>
-        <date_format_timezone>America/Montevideo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>experiment_id</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Entrada Tabla</origin>
-        <comments>experiment_id</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_UY</date_format_locale>
-        <date_format_timezone>America/Montevideo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-    </row-meta>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -696,15 +529,15 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>128</yloc>
+      <xloc>150</xloc>
+      <yloc>100</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Salida Tabla</name>
+    <name>write to [bioinformatica_fastqfile]</name>
     <type>TableOutput</type>
-    <description/>
+    <description>Write information to table [bioinformatica_fastqfile] on database [datawarehouse]</description>
     <distribute>Y</distribute>
     <custom_distribution/>
     <copies>1</copies>
@@ -712,48 +545,24 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>stg</connection>
-    <schema>public</schema>
-    <table>csvload_control</table>
-    <commit>1000</commit>
+    <connection>datawarehouse</connection>
+    <schema/>
+    <table>bioinformatica_fastqfile</table>
+    <commit>100</commit>
     <truncate>Y</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
+    <specify_fields>N</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
     <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
+    <partitioning_monthly>N</partitioning_monthly>
     <tablename_in_field>N</tablename_in_field>
     <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
+    <tablename_in_table>N</tablename_in_table>
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
-      <field>
-        <column_name>id</column_name>
-        <stream_name>id</stream_name>
-      </field>
-      <field>
-        <column_name>fastq_id</column_name>
-        <stream_name>fastq_id</stream_name>
-      </field>
-      <field>
-        <column_name>sample_id</column_name>
-        <stream_name>sample_id</stream_name>
-      </field>
-      <field>
-        <column_name>experiment_id</column_name>
-        <stream_name>experiment_id</stream_name>
-      </field>
-      <field>
-        <column_name>project_id</column_name>
-        <stream_name>project_id</stream_name>
-      </field>
-      <field>
-        <column_name>path</column_name>
-        <stream_name>path_1</stream_name>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -764,62 +573,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Valor JavaScript modificado</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-var path = "/PROJ_" + project_id + "/SAMP_" + sample_id + "/RESULTS/FQ_" + fastq_id;</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>path</name>
-        <rename>path</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>path</name>
-        <rename>path</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>128</yloc>
+      <xloc>500</xloc>
+      <yloc>100</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
