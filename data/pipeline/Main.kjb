@@ -385,7 +385,7 @@
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>prod_to_stg</name>
+      <name>Copy prod tables to stg</name>
       <description/>
       <type>JOB</type>
       <attributes/>
@@ -422,7 +422,7 @@
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>last_check</name>
+      <name>Update last_check value</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
@@ -456,12 +456,12 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>384</xloc>
+      <xloc>432</xloc>
       <yloc>32</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>save_pending_csv</name>
+      <name>Save pending CSV to be uploaded</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
@@ -495,12 +495,12 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>608</xloc>
-      <yloc>32</yloc>
+      <xloc>656</xloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>load_csv</name>
+      <name>Get pending CSV to upload</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
@@ -534,12 +534,12 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>32</yloc>
+      <xloc>432</xloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>stg_to_dwh</name>
+      <name>Copy staging tables to dwh</name>
       <description/>
       <type>JOB</type>
       <attributes/>
@@ -571,12 +571,12 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>496</xloc>
+      <xloc>656</xloc>
       <yloc>32</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Read paths fastq and store them</name>
+      <name>Read fastQ files and store them in stg tax tables</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
@@ -610,12 +610,12 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>144</yloc>
+      <xloc>160</xloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>tax stg_to_dwh</name>
+      <name>Copy tax tables from stg to dwh</name>
       <description/>
       <type>JOB</type>
       <attributes/>
@@ -647,15 +647,15 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>736</xloc>
-      <yloc>240</yloc>
+      <xloc>160</xloc>
+      <yloc>288</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
   <hops>
     <hop>
       <from>Start</from>
-      <to>prod_to_stg</to>
+      <to>Copy prod tables to stg</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -663,8 +663,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>prod_to_stg</from>
-      <to>last_check</to>
+      <from>Copy prod tables to stg</from>
+      <to>Update last_check value</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -672,8 +672,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>save_pending_csv</from>
-      <to>load_csv</to>
+      <from>Save pending CSV to be uploaded</from>
+      <to>Get pending CSV to upload</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -681,8 +681,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>last_check</from>
-      <to>stg_to_dwh</to>
+      <from>Update last_check value</from>
+      <to>Copy staging tables to dwh</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -690,8 +690,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>stg_to_dwh</from>
-      <to>save_pending_csv</to>
+      <from>Copy staging tables to dwh</from>
+      <to>Save pending CSV to be uploaded</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -699,8 +699,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>load_csv</from>
-      <to>Read paths fastq and store them</to>
+      <from>Get pending CSV to upload</from>
+      <to>Read fastQ files and store them in stg tax tables</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -708,8 +708,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>Read paths fastq and store them</from>
-      <to>tax stg_to_dwh</to>
+      <from>Read fastQ files and store them in stg tax tables</from>
+      <to>Copy tax tables from stg to dwh</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
