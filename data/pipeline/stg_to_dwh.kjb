@@ -441,7 +441,6 @@ to:   [datawarehouse].[bioinformatica_fast5]</description>
 , fastq_id INTEGER
 , "name" VARCHAR(240)
 , date_created TIMESTAMP
-, experiment_id INTEGER
 , sample_id INTEGER
 )
 ;</sql>
