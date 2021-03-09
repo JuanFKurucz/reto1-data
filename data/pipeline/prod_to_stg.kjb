@@ -373,7 +373,6 @@ CREATE TABLE bioinformatica_fast5
 , "name" VARCHAR(240)
 , date_created TIMESTAMP
 , file VARCHAR(100)
-, experiment_id INTEGER
 , sample_id INTEGER
 )
 ;</sql>
@@ -443,7 +442,6 @@ CREATE TABLE bioinformatica_fastq
 , fastQ_id INTEGER
 , "name" VARCHAR(240)
 , date_created TIMESTAMP
-, experiment_id INTEGER
 , sample_id INTEGER
 )
 ;</sql>
@@ -1004,7 +1002,6 @@ CREATE TABLE bioinformatica_project
 , description TEXT
 , create_date TIMESTAMP
 , contact_id INTEGER
-, projects_id INTEGER
 )
 ;</sql>
       <useVariableSubstitution>F</useVariableSubstitution>

@@ -731,10 +731,6 @@
     <return_field/>
     <fields>
       <field>
-        <column_name>id</column_name>
-        <stream_name>id</stream_name>
-      </field>
-      <field>
         <column_name>fastq_id</column_name>
         <stream_name>fastq_id</stream_name>
       </field>
@@ -788,18 +784,10 @@
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>//Script here
 
-var path = "/PROJ_" + project_id + "/SAMP_" + sample_id + "/RESULTS/FQ_" + fastq_id;</jsScript_script>
+var path = "/PROJ_" + project_id + "/EXP_"+ experiment_id + "/SAMP_" + sample_id + "/RESULTS/FQ_" + fastq_id;</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
-      <field>
-        <name>path</name>
-        <rename>path</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
       <field>
         <name>path</name>
         <rename>path</rename>

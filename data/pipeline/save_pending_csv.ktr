@@ -9,6 +9,56 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>DB_DWH_HOST</name>
+        <default_value>localhost</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>DB_DWH_NAME</name>
+        <default_value>datawarehouse</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>DB_DWH_PASS</name>
+        <default_value>reto_pwd</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>DB_DWH_PORT</name>
+        <default_value>55000</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>DB_DWH_USER</name>
+        <default_value>reto_user</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>DB_STG_HOST</name>
+        <default_value>localhost</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>DB_STG_NAME</name>
+        <default_value>stg</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>DB_STG_PASS</name>
+        <default_value>reto_pwd</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>DB_STG_PORT</name>
+        <default_value>55000</default_value>
+        <description/>
+      </parameter>
+      <parameter>
+        <name>DB_STG_USER</name>
+        <default_value>reto_user</default_value>
+        <description/>
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -637,8 +687,8 @@
         <origin>Entrada Tabla 2</origin>
         <comments>fastq_id</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -647,7 +697,7 @@
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>es_ES</date_format_locale>
+        <date_format_locale>en_UY</date_format_locale>
         <date_format_timezone>America/Montevideo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -660,8 +710,8 @@
         <origin>Entrada Tabla 2</origin>
         <comments>sample_id</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -670,7 +720,7 @@
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>es_ES</date_format_locale>
+        <date_format_locale>en_UY</date_format_locale>
         <date_format_timezone>America/Montevideo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -683,8 +733,8 @@
         <origin>Entrada Tabla 2</origin>
         <comments>experiment_id</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -693,7 +743,7 @@
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>es_ES</date_format_locale>
+        <date_format_locale>en_UY</date_format_locale>
         <date_format_timezone>America/Montevideo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
@@ -706,8 +756,8 @@
         <origin>Entrada Tabla 2</origin>
         <comments>project_id_id</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>,</decimal_symbol>
-        <grouping_symbol>.</grouping_symbol>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
         <trim_type>none</trim_type>
         <case_insensitive>N</case_insensitive>
@@ -716,7 +766,7 @@
         <sort_descending>N</sort_descending>
         <output_padding>N</output_padding>
         <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>es_ES</date_format_locale>
+        <date_format_locale>en_UY</date_format_locale>
         <date_format_timezone>America/Montevideo</date_format_timezone>
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
