@@ -399,7 +399,7 @@ a:   [stg].[bioinformatica_fast5]</description>
       <specification_method>filename</specification_method>
       <trans_object_id/>
       <filename>${Internal.Job.Filename.Directory}/copia_prodbioinformatica_fast5_a_stg.ktr</filename>
-      <transname>copia_prodbioinformatica_fast5_a_stg</transname>
+      <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -418,7 +418,7 @@ a:   [stg].[bioinformatica_fast5]</description>
       <follow_abort_remote>N</follow_abort_remote>
       <create_parent_folder>N</create_parent_folder>
       <logging_remote_work>N</logging_remote_work>
-      <run_configuration/>
+      <run_configuration>Pentaho local</run_configuration>
       <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
