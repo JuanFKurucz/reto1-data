@@ -9,56 +9,6 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
-      <parameter>
-        <name>DB_DWH_HOST</name>
-        <default_value>localhost</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_DWH_NAME</name>
-        <default_value>datawarehouse</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_DWH_PASS</name>
-        <default_value>reto_pwd</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_DWH_PORT</name>
-        <default_value>55000</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_DWH_USER</name>
-        <default_value>reto_user</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_HOST</name>
-        <default_value>localhost</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_NAME</name>
-        <default_value>stg</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_PASS</name>
-        <default_value>reto_pwd</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_PORT</name>
-        <default_value>55000</default_value>
-        <description/>
-      </parameter>
-      <parameter>
-        <name>DB_STG_USER</name>
-        <default_value>reto_user</default_value>
-        <description/>
-      </parameter>
     </parameters>
     <log>
       <trans-log-table>
