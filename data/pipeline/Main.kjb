@@ -86,6 +86,11 @@
       <default_value>reto_user</default_value>
       <description/>
     </parameter>
+    <parameter>
+      <name>FASTQ_ROOT_PATH</name>
+      <default_value>${Internal.Job.Filename.Directory}</default_value>
+      <description/>
+    </parameter>
   </parameters>
   <slaveservers>
     </slaveservers>
