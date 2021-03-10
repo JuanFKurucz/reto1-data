@@ -1,5 +1,9 @@
 # Pentaho pipeline
 
+## Project info
+
+The main file f the project is `Main.kjb`, use it to run the pipeline.
+
 ## Required to run
 
 A database named `stg` and another one named `datawarehouse` will be created if not existent. If manually created a public schema has to be created for it to work.
